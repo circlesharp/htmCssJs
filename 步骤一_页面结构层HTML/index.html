@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document：index.html</title>
+</head>
+<body>
+    <!-- div标签：
+        块级标签，占据一行，换行；一般用于搭建结构，容器
+        块级标签还有：div, ul, ol, li, dl, dt, dd, h1~h6, p, form, hr -->
+    <div><img src="img\html.jpg" /></div>
+    <div><img src="img\js1.jpg" /></div>
+    <div><img src="img\js2.jpg" /></div>
+    <!-- spam标签：
+        行内标签，在一行，不换行；一般用于细节处理
+        行内标签还有：b, em, img, input, a, sup, sub, textarea, span -->
+    <spam><img src="img\html.jpg" /></spam>
+    <spam><img src="img\js1.jpg" /></spam>
+    <spam><img src="img\js2.jpg" /></spam>
+    <!-- 标签嵌套规则 -->
+        <!-- 1. 块级元素可包含行内元素和某些块级元素 -->
+            <div><h1><a href=""></a></h1></div>
+        <!-- 2. 行内元素不能包含块元素，只能包含其他行内元素 -->
+            <a href=""><h1><div></div></h1></a>  <!-- 错误 -->
+            <span><em></em></span>  <!-- 正确 -->
+        <!-- 3. 块级元素不能放在<p>标签内 -->
+            <p><div>111</div><h1>222</h1></p>  <!-- 错误（浏览器会自动调整） -->
+        <!-- 4. 特殊的块级元素只能包含行内元素，不能包含块级元素（和第3点重复了哦）
+                如：h1~h6, p, dt -->
+        <!-- 5. 块级元素与块级元素并列，行内元素和行内元素并列 -->
+            <div><h1></h1><p></p></div>  <!-- 正确 -->
+            <div><span></span><a href=""></a></div>  <!-- 正确 -->
+            <div><h1>666</h1><span>888</span></div>  <!-- 错误（但是，浏览器也能渲染） -->
+</body>
+</html>

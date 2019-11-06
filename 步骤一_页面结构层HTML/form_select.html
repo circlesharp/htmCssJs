@@ -1,0 +1,124 @@
+<!DOCTYPE html>  <!-- 声明文档类型为 html -->
+<html>  <!-- 所有html代码必须写在<html>标签里面 -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>表单select</title>
+</head>
+<body>
+    <h1 align='center'>注册信息</h1>  <!-- align='center'表示居中 -->
+    <hr color='#336699'/>  <!-- 分割线 -->
+    <form action="action.php" method="POST" target="_blank">  <!-- form：表单 -->
+    <!--    action：服务器文件
+            methon：GET(默认)使用URL传递参数，用于信息获取，对发送信息的数量有限制
+                    POST    表单数据作为HTTP请求体的一部分，用户修改服务器的资源，发送信息数量无限制
+            name：表单的名字
+            target：默认为_self（本页面跳转），_blank为新标签页打开。
+            enctype：在发送表单数据之前如何对其编码（老师没细讲）--> 
+        <table width='600px' bgcolor='#f2f2f2' align='center'>  <!-- 8行 2列 -->
+            <th></th>  <!-- th为表头，应该是 table_head 的缩写 考虑美观，我这里没写内容-->
+            <tr>  <!-- tr为一行，可能是 table_row 的缩写；td是单元格，莫非是 table_data ? -->
+                <td align="right">姓名：</td>  <!-- align='right'表示右对齐，默认左对齐 -->
+                <td><input type="text" name="username" size='25' maxlength='6' placeholder="请输入姓名"/></td>
+            </tr>
+            <tr>
+                <td align="right">邮箱：</td>
+                <td><input type="text" name="email" value="@163.com" /></td>
+            </tr>
+            <tr>
+                <td align="right">密码：</td>  <!-- 出于保密：type='password' -->
+                <td><input type="password" name="paw" size="25" maxlength="6" placeholder="请输入密码" /></td>
+            </tr>
+            <tr>
+                <td align="right">确认密码：</td>
+                <td><input type="password" name="paw_confirm" size="25" maxlength="6" placeholder="请再输入密码" /></td>
+            </tr>
+            <tr>
+                <td align="right">上传图片：</td>  <!-- 文件域，type='file' -->
+                <td><input type="file" name="file" /></td>
+            </tr>
+            <tr>
+                <td align="right">性别：</td>  <!-- 单选框: type='radio' -->
+                <td>
+                    男<input type="radio" name="sex" value="man"/>  <!-- name属性要同一才能保证单选 -->
+                    女<input type="radio" name="sex" value="woman"/> <!-- value属性值才是传入后端的数据 -->
+                    保密<input type="radio" name="sex" value="unknown" checked/>  <!-- checked属性表示默认 -->
+                </td> 
+            </tr>
+            <tr>
+                <td align="right">爱好：</td>  <!-- 复选框：checkbox -->
+                <td>
+                    读书<input type="checkbox" name="dx1" value="read" checked />
+                    跳舞<input type="checkbox" name="dx1" value="dance" />  <!-- 没有name同一性的规定，但是最好统一 -->
+                    唱歌<input type="checkbox" name="dx1" value="sing" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">爱好的运动：</td>  <!-- 复选框：checkbox -->
+                <td>
+                    跑步<input type="checkbox" name="dx2" value="running" checked />
+                    篮球<input type="checkbox" name="dx2" value="basketball" />  <!-- 用dx2与dx1区分 -->
+                    跳绳<input type="checkbox" name="dx2" value="rolling" checked />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">城市：</td>
+                <td>  <!-- 在单元格里弄一个下拉菜单 select -->
+                    <select name="city">  <!-- select就是一个下拉菜单，每一个option就是一个选择 -->
+                        <option value="提示">--请选择城市--</option>  <!-- 提示小技巧 -->
+                        <option value="beijing">北京</option>  <!-- value属性值才是传给服务器的！ -->
+                        <option value="shanghai">上海</option>
+                        <option value="guangzhou">广州</option>
+                        <option value="shenzhen" selected>深圳</option>  <!-- 增加了select属性，默认选定值 -->
+                        <option value="foshan">佛山</option>
+                        <option value="shanguan">韶关</option>
+                        <option value="tianjin">天津</option>
+                    </select>
+                    <select name="city" size="4" multiple >  <!-- 增加了name multiple 属性之后，不是下拉菜单了。 -->
+                        <option value="beijing">北京</option>
+                        <option value="shanghai">上海</option>
+                        <option value="guangzhou">广州</option>
+                        <option value="shenzhen">深圳</option>
+                        <option value="foshan">佛山</option>
+                        <option value="shanguan">韶关</option>
+                        <option value="tianjin">天津</option>
+                    </select>
+                    <select name="city">  <!-- optgrout标签进行选项分组 -->
+                        <option value="提示">--请选择城市--</option>
+                        <optgroup label="一线城市">  <!-- label值为分组的名称 -->
+                            <option value="beijing">北京</option>
+                            <option value="shanghai">上海</option>
+                            <option value="guangzhou">广州</option>
+                            <option value="shenzhen">深圳</option>
+                        </optgroup>
+                        <optgroup label="其他">
+                            <option value="foshan">佛山</option>
+                            <option value="shanguan">韶关</option>
+                            <option value="tianjin">天津</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">简介：</td>
+                <td>
+                    <textarea name="简介" rows="6" cols="50" placeholder="请输入个人介绍"></textarea>
+                </td>  <!-- 不用input。多行文本域一般不需要在标签里面写信息，可用placeholder -->
+            </tr>
+            <tr>
+                <td align="center" colspan="2">  <!-- 合并了2列的单元格，并且居中处理 -->
+                    <input type="button" value="暂无意义的button" name="button" />  <!-- 按钮：button(需要额外配合js), submit（提交）, reset（重载） -->
+                    <input type="submit" value="submit(显式指定value属性值)" name="submit" />
+                    <input type="submit" name="_submit" />  <!-- 如果不指定value，有默认值 -->
+                    <input type="reset" value="重置" name="reset" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" name="hidden" value="这是一个用户注册信息" />  <!-- 隐藏域的作用在于传递信息给后端，而且用户不可见 -->
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
