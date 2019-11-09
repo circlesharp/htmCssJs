@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-JS函数</title>
+</head>
+<body>
+<!-- JS之函数 -->
+    <script>
+        /*
+        函数的定义和调用
+        函数的返回值
+        arguments对象
+            -> 一个很神奇的js概念：ECMAScript中的参数在内部用一个数组来表示。
+            -> 在函数体内通过arguments对象来访问这个数组参数。
+            1. arguments对象只是与数组类似，并不是Array的实例。
+            2. []语法访问它的每一个元素。
+            3. length属性确定传递参数的个数。
+        */
+
+        /* 函数的定义
+        function funcName([arg0, arg1, ……]) {
+            statements
+            [return sth]
+        }
+        */
+
+        // 可以支持递归
+        // function fib(n) {
+        //     if (n<=2) {
+        //         return 1;
+        //     } else {
+        //         return fib(n-1) + fib(n-2);
+        //     }
+        // }
+        // for (var n = 1; n <= 20; n++) {
+        //     document.write(n.toString() +" -> "+ fib(n).toString() + "<br />")
+        // }
+
+        // arguments小项目：求任意一组数的平均值
+        function getAvg() {  // 定义函数的时候，可以不填形式参数
+            var n = arguments.length;
+            var sum = 0;
+            for (var i=0; i<n; i++) {
+                sum += arguments[i];
+            }
+            return sum/n;
+        }
+        document.write(getAvg(1,2,3,4,5,6,7,8,9,10,11));
+
+        
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

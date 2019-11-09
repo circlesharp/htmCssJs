@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-JS控制流</title>
+</head>
+<body>
+<!-- JS之分支结构 -->
+    <script>
+        /* 
+        if
+        prompt()：  弹出输入对话框
+        alert()：   弹出警告对话框
+        */
+
+        // if(condition){statement;}
+        // var age = 15;
+        //     if(age<18){
+        //         alert("未成年慎入");
+        //     }    
+
+        // if(condition){statement1;}else{statement2;}
+        // var age = prompt("今年多大？");
+        // if(age<18){
+        //     alert("未成年慎入");
+        // }else{
+        //     alert("你也来网上冲浪！")
+        // }
+
+        // if(condition){statement1;}else if{statement2;}else{statement3;}
+        // var age = prompt("今年多大？");
+        // if(age<18){
+        //     alert("未成年慎入");
+        // }else if(age<=60){
+        //     alert("你也来网上冲浪！");
+        // }else{
+        //     alert("长者免费");
+        // }
+        
+
+        // if 嵌套
+        // string.length 字符串方法，返回长度，number类型
+        // var password = prompt("请设置6位数字密码：");
+        // if (password.length!=6) {
+        //     alert("密码需要6位数哦~");
+        // } else {
+        //     if (!isNaN(Number(password))) {
+        //         alert("密码设置正确！");
+        //     } else {
+        //         alert("密码必须是6位数哦~");
+        //     }
+        // }
+
+        // 小练习
+        // var str = "abc123";
+        // var num = parseInt(str);
+        // if (num == NaN) {
+        //     alert(NaN);  // typeof(num)的确是NaN，但是NaN不等于任何东西，包括它自己本身。
+        // } else if (num == 123) {
+        //     alert(123);
+        // } else if (typeof(num) == "number") {
+        //     alert("number");  // NaN也是 number 类型
+        // } else {
+        //     alert("string");
+        // }
+        
+        /*
+        星期的获取方法      new Date().getDay() 返回number 0-6
+        document.write()   向浏览器输出内容
+        switch             多条件判断
+        */
+        var week = new Date().getDay();
+        console.log(week)
+        
+        // 多条件判断用 switch
+        // switch (expression) {  // 括号里面不是判断，而是一个表达式，甚至一个变量
+        //     case value:statement   // case后面是space, 不是等于
+        //     break;    // break一定要换行写
+        //     case value:statement 
+        //     break;
+        //     ……
+        //     default:statement
+        // }
+        // switch (week) {
+        //     case 0: document.write("Sunday") 
+        //     break;
+        //     case 1: document.write("Monday") 
+        //     break;
+        //     case 2: document.write("Tuesday") 
+        //     break;
+        //     case 3: document.write("Websday") 
+        //     break;
+        //     // case 4 : document.write("Thursday") 
+        //     // break;
+        //     case 5: document.write("Friday") 
+        //     break;
+        //     case 6: document.write("Saturday") 
+        //     break;
+        //     default: 
+        //     document.write("Thursday");
+        // }
+        
+        // 使用变量拼接
+        std = "Today is "
+        switch (week) {
+            case 0: weekDay = "Sunday"
+            break;
+            case 1: weekDay = "Monday"
+            break;
+            case 2: weekDay = "Tuesday"
+            break;
+            case 3: weekDay = "Websday"
+            break;
+            case 5: weekDay = "Friday"
+            break;
+            case 6: weekDay = "Saturday" 
+            break;
+            default: 
+            weekDay = "Thursday";
+        }
+        document.write(std+weekDay+"<br />")
+    </script>
+
+<!-- JS之循环结构 -->
+    <script>
+        /*
+        for
+        for-in
+        while
+        do...while
+        */
+
+        // for (statement1; statement2; statement3) {
+        //      block1; block2; ……
+        // }
+        // statement1: 在循环开始前执行
+        // statement2: 运行循环（代码块）的条件
+        // statement3: 在循环结束后执行
+        
+        // 1-100
+        // for (var i = 1; i <= 100; i++) {
+        //     document.write(i + "<br />");
+        // }
+
+        // 99-6
+        // for (var i = 99; i >=6; i--) {
+        //     document.write(i+"<br />");
+        // }
+        // console.log(i)  // 这时候，i==5。而且，i不是循环中的局部变量。
+
+        /*  循环的嵌套：
+        1. 外层为假时，内层不执行
+        2. 先执行外层再执行内层，直到内层的条件为假时再返回外层去执行
+        */
+        // for (var i = 1; i <= 3; i++) {
+        //     document.write("<hr />" + i + "<br />");
+        //     for (var k = 1; k <= 5; k++) {
+        //         document.write(k + "<br />");
+        //     }
+        //     document.write("<br />")
+        // }
+
+        /*  while
+        while(condition) {
+            block1; block2; ……
+        }
+        */
+        // var index = 1;
+        // while(index<101) {
+        //     document.write((index++).toString() + "<br />");  // 巧妙使用 a++
+        // }
+
+        /*  do……while
+        do{
+            block1; block2; ……
+        } while(condition)
+        */
+        // index = 100
+        // do{
+        //     document.write((--index).toString() + "<br />")
+        // } while(index>1)  // 99~1
+
+        // 1 + …… + 100
+        var i = 1, values = 0;
+        while(i<=100) {
+            values += i++;
+        }
+        document.write(values + "<br />");
+    </script>
+
+<!-- JS之 break & continue 语句 -->
+    <script>
+        /*
+        break       立马退出循环
+        continue    立马退出本次循环，继续开始下一次循环
+        */
+
+        // 如果i是5的倍数，退出循环
+        // for (var i = 1; i<=20; i++) {
+        //     if(i%5){
+        //         document.write(i + "<br />");
+        //     } else {
+        //         document.write("<hr />")
+        //         // continue
+        //         break
+        //     }
+        // }
+
+        // 打印所有 0-50 之间，除 20，30 之外5的倍数
+        for (var i = 1; i <= 50; i++) {
+            if (!(i%5) && i!=20 && i!=30) {
+                document.write(i + "<br />");
+            }
+        }
+
+        // 另一个方法，也巧妙
+        document.write("<br />" + "另一个方法，也巧妙" + "<hr />")
+        for(var n=0; n<=50; n+=5) {
+            if(n==20 || n==30) {
+                continue;
+            }
+            document.write(n + "<br />");
+        }
+    </script>
+</body>
+</html>

@@ -138,3 +138,5 @@
         capitalize, uppercase, lowercase, none
     text-docoration（设置元素内文本的装饰）
         underline, overline, line-through, blink, none
+### 盒子模型
+    

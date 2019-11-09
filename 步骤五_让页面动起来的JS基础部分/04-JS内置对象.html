@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-JS内置对象</title>
+</head>
+<body>
+<!-- JS之内置对象 -->
+    <script>
+    /* JavaScript中的内置对象：
+    Array
+    String
+    Math
+    Date
+    */
+
+    /* Array对象 */
+    /*
+    ECMAScript 中的 Array 数组
+    用来存储一组数据
+    1. 创建数组
+    2. 数组元素的读和写
+    3. length属性
+    */
+
+        // 创建数组的2种方式
+        // 1. 使用 Array 构造函数
+        var colors = new Array(3);
+        var nums = new Array(1, 3, 6, 9);
+        console.log(nums);
+        // 2. 使用数组字面量表示法 -> []
+        var cols = ["red", "yellow", "gray"];
+        console.log(cols);
+        
+        // 数组的混合类型
+        var infos = [6, "maryy", true, {email:"marry@qq.com"}];  // 最后一个值是对象
+        console.log(infos);
+
+        // 索引
+        console.log(infos[3]["email"]);  // 为啥这个 key 一样的东西现在又需要双引号了
+        console.log(infos[3].email);  // 但是，通过点运算，能够将这个对象的属性值取出来
+        console.log(infos[4]);  // 超出索引范围 -> undefined
+
+        // length属性
+        // 1. 得到长度
+        // 2. 改变长度 -> 可以用来删除数组排在后面的值
+        var arr = ["a", "b", "c", "d"];
+        console.log(arr.length);
+        arr.lenth=3; console.log(arr);  // 不建议直接修改 length 属性
+        arr.lenth=5; console.log(arr);
+        arr[9] = "sth"; console.log(arr); console.log(arr.length); // 这是在第 9 位就有 "sth" 这个元素
+
+        // 数组的遍历
+        console.log("对 arr数组 进行for遍历")
+        for (var i=0; i<=arr.length; i++) {console.log(arr[i]);}
+        console.log("对 infos数组 进行while遍历")
+        var n = 0; while (n<=infos.length) {console.log(infos[n]); n++;}  // while 循环复习：计数器要在循环语句前定义。
+    
+
+    /* 
+    数组的栈方法：
+    1. push()
+        -> arr.push(newele1, newele2, ……)
+        -> 将newele顺序添加到arr的尾部（像append，但是能添加多个）
+        -> 返回：添加后数组的长度
+    2. unshift()
+        -> 把值放到arr的最前面（和push类似）
+    3. pop()
+        -> arr.pop()
+        -> 删除并返回 arr 最后一个元素 （就像Python中的pop）
+    4. shift()
+        -> 和 unshift 相反；功能和 pop 类似
+    */
+    console.log("-----数组的栈方法-----")
+
+        // push
+        var arr = ["a", "b", "c", "d"];
+        var arr_new_length = arr.push("ps", "cs", "gs");  // 返回长度
+        console.log(arr_new_length); console.log(arr);
+
+        // unshift
+        var arr_new_length_2 = arr.unshift("u1", "u2");  // 返回长度
+        console.log(arr_new_length_2); console.log(arr);
+
+        // pop
+        var arr_last_ele = arr.pop();
+        console.log(arr_last_ele); console.log(arr);
+
+        // shift
+        var arr_first_ele = arr.shift()
+        console.log(arr_first_ele); console.log(arr);
+
+    /*
+    数据在转换方法
+    1. join
+        -> arr.join(separator); -> String
+        -> 如果没有填separator，默认用逗号分割
+    2. reverse()
+        -> arr.reverse();  
+        -> 反序
+    3. sort
+        -> arr.sort(sortby);
+        -> 对数组排序，返回排序之后的数组
+        -> 即使数组中的每一项都是数值，sort()方法比较的也是字符串
+        -> sort()方法可以接受一个比较函数作为参数
+    */
+    console.log("-----数组的转换方法-----");
+        
+        // join
+        arr2str = arr.join("-"); console.log(arr2str);
+        // reverse
+        arr_rev = arr.reverse(); console.log(arr_rev);
+        // 链式调用
+        arr_rev_to_str = arr.reverse().join("~"); console.log(arr_rev_to_str);
+        // sort
+        var num_arr = [9, 23, 15,-99, 88, 12, -2];
+        num_arr.sort(); console.log(num_arr);  // 没有办法直接对数字排序，因为默认会转化为字符串；
+        num_arr.sort(function(a,b) {return a-b}); console.log(num_arr);  // 传入匿名函数，升序
+        num_arr.sort(function(a,b) {return b-a}); console.log(num_arr);  // 暂时没弄懂升序的原理。
+
+    /* 
+    数组的 concat 与 slice 方法
+    1. concat
+        -> arr.concat(another_arr); -> new_arr
+        -> 拼接Array
+    2. slice
+        -> arr.slice(start, end); -> new_arr
+        -> start是必须的，end是可选的
+        -> 负数的规则和Python相同
+
+    */
+    console.log("-----数组的 concat&slice 方法-----");
+
+        // concat
+        var arr01 = [1, 3, 5]; arr02 = [2, 4, 6]; arr03 = new Array();
+        arr03 = arr03.concat(arr01, arr02, ["extal", "another"]); console.log(arr03);
+        var arr04 = arr01 + arr02; console.log(arr04);  // 不像Python，使用 + 会首先 join，再进行字符串拼接。
+
+        // slice
+        var cols = ["red", "yellow", "gray", "blue", "skyblue"];
+        console.log(cols.slice(1, 4));  // ["yellow", "gray", "blue"]
+        console.log(cols.slice(-2, -1));  // ["blue"]
+
+        // 小练习：实现对数组cols的拷贝
+        var a, b, c, d;
+        // 1. 数组遍历，push()
+            a = new Array(); for (var i=0; i<cols.length; i++) {a.push(cols[i]);}
+        // 2. concat()
+            b = new Array(); b = b.concat(cols);
+        // 3. slice()
+            c = cols.slice(0);
+        // 4. unshift
+            d = new Array(); for (var i=cols.length-1; i>=0; i--) {d.unshift(cols[i]);}  // 这里使用 --i 和 i-- 都无所谓，因为都是每一次循环之后再执行。
+        console.log([a, b, c, d]);
+
+    /*
+    splice （原位置修改/ splice意为铰接）
+        1. 删除数组项
+            -> arr.splice(index, count); 
+            -> 删除从index处开始的count个元素
+            -> 原位置删除；返回删除的列表
+            -> 若count为0，表示不进行删除操作（为插入功能作铺垫）
+        2. 插入数组项
+            -> arr.splice(index, 0, item1, item2, ……);
+            -> 在index处之前插入，原位置修改，返回空array
+        3. 替换数组项
+            -> arr.splice(index, count, item1, item2, ……);
+            -> 删除和插入都是替换的特殊情况
+    */
+    console.log("-----数组的 splice 方法-----");
+    var arr = [0, 1, 2, 3, 4, 5, 6];
+        // 删除
+        var arr_copy = arr.slice(0)
+        var arr_del = arr_copy.splice(1, 3); 
+        console.log(arr_copy); console.log(arr_del); // [0, 4, 5, 6] [1, 2, 3]
+
+        // 插入
+        var arr_copy = arr.slice(0);
+        var arr_insert = arr_copy.splice(3, 0, 2.1, 2.2, 2.3, 2.4);
+        console.log(arr_copy); console.log(arr_insert);  // [0, 1, 2, 2.1, 2.2, 2.3, 2.4, 3, 4, 5, 6] []
+
+        // 替换
+        var arr_copy = arr.slice(0);
+        var arr_replace = arr_copy.splice(3, 2, "a", "b", "c");
+        console.log(arr_copy); console.log(arr_replace);  // [0, 1, 2, "a", "b", "c", 5, 6] [3, 4]
+        
+    /*
+    数组的位置方法：
+    1. indexOf()
+        -> arr.indexOf(searchvalue [,startIndex])
+        -> 返回 searchvalue 在 arr 的位置；如果没有找到，返回-1。
+    2. lastIndexOf()
+        -> 从尾巴开始查找
+    */
+    console.log("-----数组的位置方法-----");
+    var arr = [0, 1, 2, 3, 4, 5, 6, 4, 8];
+        
+        // indexOf
+        var pos4_1 = arr.indexOf(4), pos4_2 = arr.indexOf(4,5), pos9 = arr.indexOf(9);
+        console.log(pos4_1); console.log(pos4_2); console.log(pos9);  // 4 7 -1
+        // lastIndexOf
+        var pos4_3 = arr.lastIndexOf(4), pos4_4 = arr.lastIndexOf(4, 6);
+        console.log(pos4_3); console.log(pos4_4);  // 7 4
+
+        // 封装一个方法实现indexOf的功能
+        function my_indexOf (arr, searchvalue, startIndex=0) {
+            // var arr = arguments[0];
+            // var searchvalue = arguments[1];
+            // var startIndex = arguments[2] ? arguments[2] : 0;
+            // console.log("当前的startIndex:"+startIndex);
+            for (var i=startIndex; i<=arr.length; i++) {
+                if (arr[i]===searchvalue) {  //用全等操作
+                    return i;
+                    }
+                }
+                return -1;  // 当循环结束之后还没有找到才最后返回 -1
+            }
+        var pos4_5 = my_indexOf(arr, 4), pos4_6 = my_indexOf(arr, 4, 5), pos9_2 = my_indexOf(arr, 9);
+        console.log(pos4_5); console.log(pos4_6); console.log(pos9_2);
+
+    
+    /* String对象 */
+    /*  字符串检索方法
+    1. charAt()
+        -> str.charAt(index) -> str中index位置的字符
+        -> 尽管可以使用 [] 来进行索引，但是为了向下兼容，最好别用 []
+    2. charCodeAt()
+        -> str.charCodeAt(index) -> str中index位置的字符的字符编码
+    3. indexOf()
+        -> 和Array一样
+    4. lastIndexOf()
+    */
+    console.log("-----String 检索方法-----");
+        var str = "marry@qq.com"
+        console.log(str.charAt(4));  // "y"
+        console.log(str.indexOf("@"));  // 5
+
+
+    /* 字符串截取方法
+    1. slice
+        -> 和Array一样
+        -> 如果不填第二个参数，截取到末尾
+    2. substring
+        -> 与slice几乎一样
+        -> 但是，遇到负数自动转为0
+    3. substr
+        -> str.substr(start [,len]);
+        -> len省略，截取到末尾；len负数或0，得空字符串。
+    */
+    console.log("-----String 截取方法-----");
+        
+        // 字符串截取的3个方法
+        var str = "marry@qq.com";
+        console.log(str.slice(-1, 10));  // 不会自动换位置
+        console.log(str.substring(-1,10));  // 负数当0使，并且调换位置
+        console.log(str.substr(6, 6));  // "qq.com"
+
+        // 小练习：获取拓展名
+        var url = "http://baidu.com/index.txt";
+        function getFileFormat(url) {
+            // 获取"."在url中出现的位置
+            var pos = url.lastIndexOf(".");  // 后缀名，从后往前数
+            // return url.slice(pos);
+            return url.substr(pos);
+        }
+        var formatName = getFileFormat(url);
+        console.log(formatName);
+
+    /*
+    1. split
+        -> str.split(separator);  和python一样。
+    2. replace
+        -> str.replace(regexp/substr, replacement);  -> str
+        -> 在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串
+    3. toUpperCase
+    4. toLowerCase
+    */
+    console.log("-----String的 split&replace 方法-----");
+
+        // split
+        var str = "welcome-to-Beijing";
+        var str_arr = str.split("-");
+        console.log(str_arr);
+        // replace
+        var str_replace = str.replace("-", " ");
+        console.log(str_replace);
+        // 小练习：转为驼峰形式
+        function camelBack(str) {
+            var newStr = "";
+            var str_arr = str.split("-");  // 拆分成数组好处理
+            // console.log(str_arr);
+            newStr += str_arr[0];
+            for (var i=1; i<str_arr.length; i++) {
+                // console.log(str_arr[i])
+                str_arr[i] = str_arr[i].charAt(0).toUpperCase() + str_arr[i].substr(1);
+                newStr += str_arr[i];
+            }
+            return newStr
+        }
+        var camelFormat = camelBack("border-left-color");
+        console.log(camelFormat);
+    
+
+    /*
+    Math对象
+    1. min()
+    2. max()
+        -> 只要出现一个不是数字，就是返回NaN
+    3. ceil()
+        -> 向上取整
+    4. floor()
+        -> 向下取整
+    5. round()
+        -> 四舍五入
+    6. abs()
+        -> 绝对值
+    7. random()
+        -> 返回 [0,1) 的一个随机数
+    */
+    console.log("-----Math对象-----");
+        
+        var num = 12.0
+        console.log(Math.ceil(num));
+        console.log(Math.floor(num));
+
+        // 小练习：生成一个n到m之间的随机整数
+        // 公式： random = Math.floor(Math.random()*(m-n+1)+n)
+        function getRandom(n, m) {
+            return Math.floor(Math.random()*(m-n+1)+n);
+        }
+        console.log(getRandom(2,6));
+
+    
+    /*
+    Date对象
+    1. 创建日期对象
+        -> new Date()
+    2. Date对象获取日期
+        -> 注意星期和月份，都是从0开始的
+        -> getDate 日期
+        -> getDay  礼拜几
+    3. Date对象设置日期
+    */
+    console.log("-----date对象-----");
+        // 创建一个日期对象
+        var today = new Date(),
+            year = today.getFullYear(),
+            month= today.getMonth()+1,  // 月份和星期都是从0开始数的
+            date = today.getDate(),
+            week = today.getDay(),  // 这里配合数组，而不是用以前的swift
+            hours= today.getHours(),
+            minutes = today.getMinutes(),
+            seconds = today.getSeconds(),
+            weeks = ["日", "一", "二", "三", "四", "五", "六"],
+            time = year+"年"+month+"月"+date+"日"+hours+"时"+minutes+"分"+seconds+"秒";
+        console.log("今天是："+time+" | 星期"+weeks[week]);
+
+        // 创建一个日期对象
+        // 小练习： 50天之后是星期几
+        // 第一种做法：
+        today.setDate(today.getDate()+1);
+        console.log(today.getDay());
+        // 第二种做法：给Date传参
+        var someDay = new Date(year, month-1, date+1);  // 注意，月份是从0开始
+        console.log("50天之后是：星期"+ weeks[someDay.getDay()]);
+    </script>
+</body>
+</html>
