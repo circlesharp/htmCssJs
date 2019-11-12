@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position_sticky</title>
+    <!--
+    position_sticky  -- 赛季新秀、实力布局糖(了解即可)
+    磁铁定位、粘性定位、吸附定位
+
+    -->
+    <style>
+        .logo{
+            width: 100%;
+            height: 50px;
+            background: pink;
+            cursor: wait;  /* Auto、Crosshair、Default、Pointer、Move、e-resize、ne-resize、nw-resize、n-resize、se-resize、sw-resize、s-resize、w-resize、text、wait、help */
+        }
+        .nav{
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            background: skyblue;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        想象我是一个logo
+    </div>
+    <div class="nav">
+        想象一下  banner 导航按钮 | 分享 | 收藏
+    </div>
+    <div>
+        <p>
+                # 召唤大黄鸡
+                '''
+                滚动鼠标滑轮，让程序页面滑动到最后
+                然后根据视频指示，通过指令一起修复大黄鸡
+                '''
+                import turtle
+                
+                t = turtle.Pen()
+                t.hideturtle()
+                t.speed(0)
+                
+                
+                def head(color=None):
+                    is_wounded = False
+                    if not color:
+                        color = "yellow"
+                        is_wounded = True
+                
+                    t.penup()
+                    t.goto(0, -100)
+                    t.pendown()
+                    t.begin_fill()
+                    t.color(color)
+                    t.circle(100)
+                    t.end_fill()
+                
+                    if is_wounded:
+                        # 伤痕
+                        t.penup()
+                        t.goto(-60, -50)
+                        t.setheading(45)
+                        t.pensize(8)
+                        t.pencolor("gray")
+                        t.pendown()
+                        t.forward(20)
+                        t.penup()
+                        t.goto(-40, -50)
+                        t.pendown()
+                        t.forward(16)
+                
+                
+                def face(eye=("up", "black"), nose="darkred", mouth="coral"):
+                    # 设置画眼睛
+                    t.pencolor(eye[1])
+                    t.pensize(5)
+                
+                    def draw_eye(eye):
+                        if eye[0] == "down":
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 25)
+                            t.pendown()
+                            t.setheading(-70)
+                            t.circle(20, 140)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 25)
+                            t.pendown()
+                            t.setheading(-110)
+                            t.circle(-20, 140)
+                        elif eye[0] == "open":
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 25)
+                            t.pendown()
+                            t.setheading(-70)
+                            t.dot(16)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 25)
+                            t.pendown()
+                            t.setheading(-110)
+                            t.dot(16)
+                        else:
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 15)
+                            t.pendown()
+                            t.setheading(70)
+                            t.circle(-20, 140)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 15)
+                            t.pendown()
+                            t.setheading(110)
+                            t.circle(20, 140)
+                
+                    def draw_nose(nose):
+                        t.penup()
+                        t.goto(-15, -10)
+                        t.pensize(1)
+                        t.color(nose)
+                        t.setheading(-90)
+                        t.pendown()
+                        t.begin_fill()
+                        t.circle(15, 180)
+                        for i in range(10):
+                            t.forward(3)
+                            t.left(7)
+                        t.left(20)
+                        t.backward(2)
+                        t.left(20)
+                        for i in range(10):
+                            t.forward(3)
+                            t.left(7)
+                        t.end_fill()
+                
+                    def draw_mouth(mouth):
+                        # 嘴巴(外)
+                        t.penup()
+                        t.goto(12, -10)
+                        t.setheading(120)
+                        t.color(mouth)
+                        t.begin_fill()
+                        t.circle(14, 120)
+                        t.setheading(-60)
+                        t.circle(14, 120)
+                        t.end_fill()
+                
+                    draw_eye(eye)
+                    draw_nose(nose)
+                    draw_mouth(mouth)
+                
+                
+                def hands(color="yellow"):
+                    # 左手
+                    t.pensize(1)
+                    t.penup()
+                    t.goto(-100, 0)
+                    t.setheading(190)
+                    t.pendown()
+                    t.color(color)
+                    t.begin_fill()
+                    for i in range(7):
+                        t.forward(9)
+                        t.left(6)
+                    for i in range(19):
+                        t.forward(1)
+                        t.left(6)
+                    for i in range(7):
+                        t.forward(9)
+                        t.left(5)
+                    t.end_fill()
+                    # 右手
+                    t.penup()
+                    t.goto(100, 0)
+                    t.setheading(-10)
+                    t.pendown()
+                    t.fillcolor(color)
+                    t.begin_fill()
+                    for i in range(7):
+                        t.forward(9)
+                        t.right(6)
+                    for i in range(19):
+                        t.forward(1)
+                        t.right(6)
+                    for i in range(7):
+                        t.forward(9)
+                        t.right(5)
+                    t.end_fill()
+                
+                
+                # 引擎
+                def engines(size=10):
+                    def engine(x, y):
+                        t.pensize(1)
+                        t.setheading(0)
+                        # 外圆位置
+                        t.penup()
+                        t.goto(x, y)
+                        t.pendown()
+                        # 画外圆
+                        t.color("black", "yellow")
+                        t.begin_fill()
+                        t.circle(-size)
+                        t.end_fill()
+                        # 内圆位置
+                        t.penup()
+                        t.goto(x, y - 4)
+                        t.pendown()
+                        # 画内圆
+                        t.setheading(0)
+                        t.color("black", "brown")
+                        t.begin_fill()
+                        t.circle(-size + 4)
+                        t.end_fill()
+                
+                    # 左引擎
+                    engine(-100, -40)
+                    engine(-130, -40)
+                    # 右引擎
+                    engine(100, -40)
+                    engine(130, -40)
+                
+                
+                def seat(chair_color="brown"):
+                    # 护栏
+                    t.penup()
+                    t.goto(50, 96)
+                    t.color("deepskyblue")
+                    t.pensize(1)
+                    t.pendown()
+                    t.begin_fill()
+                    t.setheading(90)
+                    t.circle(10, 90)
+                    t.forward(10)
+                    t.setheading(90)
+                    t.forward(10)
+                    t.circle(5, 90)
+                    t.forward(50)
+                    t.circle(5, 90)
+                    t.forward(10)
+                    t.setheading(180)
+                    t.forward(10)
+                    t.circle(10, 90)
+                    t.setheading(0)
+                    t.forward(100)
+                    t.end_fill()
+                    # 坐椅
+                    t.penup()
+                    t.goto(20, 122)
+                    t.color(chair_color)
+                    t.setheading(90)
+                    t.pendown()
+                    t.begin_fill()
+                    t.forward(15)
+                    t.circle(5, 90)
+                    t.forward(30)
+                    t.circle(5, 90)
+                    t.forward(15)
+                    t.end_fill()
+                
+                
+                def glasses(color="skyblue"):
+                    # 左镜框
+                    t.penup()
+                    t.goto(20, 50)
+                    t.pencolor("brown")
+                    t.pensize(10)
+                    t.setheading(0)
+                    t.pendown()
+                    t.fillcolor(color)
+                    t.begin_fill()
+                    for i in range(2):
+                        t.forward(60)
+                        t.circle(8, 90)
+                        t.forward(30)
+                        t.circle(8, 90)
+                    t.end_fill()
+                    # 右镜框
+                    t.penup()
+                    t.goto(-20, 50)
+                    t.setheading(180)
+                    t.pendown()
+                    t.begin_fill()
+                    for i in range(2):
+                        t.forward(60)
+                        t.circle(-8, 90)
+                        t.forward(30)
+                        t.circle(-8, 90)
+                    t.end_fill()
+                    # 眼镜连接
+                    t.penup()
+                    t.goto(-6, 70)
+                    t.setheading(0)
+                    t.pensize(20)
+                    t.pendown()
+                    t.forward(13)
+                    # 左镜片光泽
+                    t.penup()
+                    t.goto(50, 65)
+                    t.setheading(45)
+                    t.pensize(8)
+                    t.pencolor("white")
+                    t.pendown()
+                    t.forward(25)
+                    t.penup()
+                    t.goto(70, 65)
+                    t.pendown()
+                    t.forward(12)
+                    # 右镜片光泽
+                    t.penup()
+                    t.goto(-50, 65)
+                    t.setheading(45)
+                    t.pensize(8)
+                    t.pencolor("white")
+                    t.pendown()
+                    t.forward(25)
+                    t.penup()
+                    t.goto(-30, 65)
+                    t.pendown()
+                    t.forward(12)
+                
+                
+                # 请在下方 head() 指令中输入代码，去除大黄鸡
+                head("yellow")
+                face()
+                # hands()
+                seat()
+                # 请在下方 glasses() 指令中输入代码，给大黄鸡戴上墨镜
+                glasses("black")
+                # ----------------------------
+                engines()
+                
+        </p>
+        <p>
+                # 召唤大黄鸡
+                '''
+                滚动鼠标滑轮，让程序页面滑动到最后
+                然后根据视频指示，通过指令一起修复大黄鸡
+                '''
+                import turtle
+                
+                t = turtle.Pen()
+                t.hideturtle()
+                t.speed(0)
+                
+                
+                def head(color=None):
+                    is_wounded = False
+                    if not color:
+                        color = "yellow"
+                        is_wounded = True
+                
+                    t.penup()
+                    t.goto(0, -100)
+                    t.pendown()
+                    t.begin_fill()
+                    t.color(color)
+                    t.circle(100)
+                    t.end_fill()
+                
+                    if is_wounded:
+                        # 伤痕
+                        t.penup()
+                        t.goto(-60, -50)
+                        t.setheading(45)
+                        t.pensize(8)
+                        t.pencolor("gray")
+                        t.pendown()
+                        t.forward(20)
+                        t.penup()
+                        t.goto(-40, -50)
+                        t.pendown()
+                        t.forward(16)
+                
+                
+                def face(eye=("up", "black"), nose="darkred", mouth="coral"):
+                    # 设置画眼睛
+                    t.pencolor(eye[1])
+                    t.pensize(5)
+                
+                    def draw_eye(eye):
+                        if eye[0] == "down":
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 25)
+                            t.pendown()
+                            t.setheading(-70)
+                            t.circle(20, 140)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 25)
+                            t.pendown()
+                            t.setheading(-110)
+                            t.circle(-20, 140)
+                        elif eye[0] == "open":
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 25)
+                            t.pendown()
+                            t.setheading(-70)
+                            t.dot(16)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 25)
+                            t.pendown()
+                            t.setheading(-110)
+                            t.dot(16)
+                        else:
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 15)
+                            t.pendown()
+                            t.setheading(70)
+                            t.circle(-20, 140)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 15)
+                            t.pendown()
+                            t.setheading(110)
+                            t.circle(20, 140)
+                
+                    def draw_nose(nose):
+                        t.penup()
+                        t.goto(-15, -10)
+                        t.pensize(1)
+                        t.color(nose)
+                        t.setheading(-90)
+                        t.pendown()
+                        t.begin_fill()
+                        t.circle(15, 180)
+                        for i in range(10):
+                            t.forward(3)
+                            t.left(7)
+                        t.left(20)
+                        t.backward(2)
+                        t.left(20)
+                        for i in range(10):
+                            t.forward(3)
+                            t.left(7)
+                        t.end_fill()
+                
+                    def draw_mouth(mouth):
+                        # 嘴巴(外)
+                        t.penup()
+                        t.goto(12, -10)
+                        t.setheading(120)
+                        t.color(mouth)
+                        t.begin_fill()
+                        t.circle(14, 120)
+                        t.setheading(-60)
+                        t.circle(14, 120)
+                        t.end_fill()
+                
+                    draw_eye(eye)
+                    draw_nose(nose)
+                    draw_mouth(mouth)
+                
+                
+                def hands(color="yellow"):
+                    # 左手
+                    t.pensize(1)
+                    t.penup()
+                    t.goto(-100, 0)
+                    t.setheading(190)
+                    t.pendown()
+                    t.color(color)
+                    t.begin_fill()
+                    for i in range(7):
+                        t.forward(9)
+                        t.left(6)
+                    for i in range(19):
+                        t.forward(1)
+                        t.left(6)
+                    for i in range(7):
+                        t.forward(9)
+                        t.left(5)
+                    t.end_fill()
+                    # 右手
+                    t.penup()
+                    t.goto(100, 0)
+                    t.setheading(-10)
+                    t.pendown()
+                    t.fillcolor(color)
+                    t.begin_fill()
+                    for i in range(7):
+                        t.forward(9)
+                        t.right(6)
+                    for i in range(19):
+                        t.forward(1)
+                        t.right(6)
+                    for i in range(7):
+                        t.forward(9)
+                        t.right(5)
+                    t.end_fill()
+                
+                
+                # 引擎
+                def engines(size=10):
+                    def engine(x, y):
+                        t.pensize(1)
+                        t.setheading(0)
+                        # 外圆位置
+                        t.penup()
+                        t.goto(x, y)
+                        t.pendown()
+                        # 画外圆
+                        t.color("black", "yellow")
+                        t.begin_fill()
+                        t.circle(-size)
+                        t.end_fill()
+                        # 内圆位置
+                        t.penup()
+                        t.goto(x, y - 4)
+                        t.pendown()
+                        # 画内圆
+                        t.setheading(0)
+                        t.color("black", "brown")
+                        t.begin_fill()
+                        t.circle(-size + 4)
+                        t.end_fill()
+                
+                    # 左引擎
+                    engine(-100, -40)
+                    engine(-130, -40)
+                    # 右引擎
+                    engine(100, -40)
+                    engine(130, -40)
+                
+                
+                def seat(chair_color="brown"):
+                    # 护栏
+                    t.penup()
+                    t.goto(50, 96)
+                    t.color("deepskyblue")
+                    t.pensize(1)
+                    t.pendown()
+                    t.begin_fill()
+                    t.setheading(90)
+                    t.circle(10, 90)
+                    t.forward(10)
+                    t.setheading(90)
+                    t.forward(10)
+                    t.circle(5, 90)
+                    t.forward(50)
+                    t.circle(5, 90)
+                    t.forward(10)
+                    t.setheading(180)
+                    t.forward(10)
+                    t.circle(10, 90)
+                    t.setheading(0)
+                    t.forward(100)
+                    t.end_fill()
+                    # 坐椅
+                    t.penup()
+                    t.goto(20, 122)
+                    t.color(chair_color)
+                    t.setheading(90)
+                    t.pendown()
+                    t.begin_fill()
+                    t.forward(15)
+                    t.circle(5, 90)
+                    t.forward(30)
+                    t.circle(5, 90)
+                    t.forward(15)
+                    t.end_fill()
+                
+                
+                def glasses(color="skyblue"):
+                    # 左镜框
+                    t.penup()
+                    t.goto(20, 50)
+                    t.pencolor("brown")
+                    t.pensize(10)
+                    t.setheading(0)
+                    t.pendown()
+                    t.fillcolor(color)
+                    t.begin_fill()
+                    for i in range(2):
+                        t.forward(60)
+                        t.circle(8, 90)
+                        t.forward(30)
+                        t.circle(8, 90)
+                    t.end_fill()
+                    # 右镜框
+                    t.penup()
+                    t.goto(-20, 50)
+                    t.setheading(180)
+                    t.pendown()
+                    t.begin_fill()
+                    for i in range(2):
+                        t.forward(60)
+                        t.circle(-8, 90)
+                        t.forward(30)
+                        t.circle(-8, 90)
+                    t.end_fill()
+                    # 眼镜连接
+                    t.penup()
+                    t.goto(-6, 70)
+                    t.setheading(0)
+                    t.pensize(20)
+                    t.pendown()
+                    t.forward(13)
+                    # 左镜片光泽
+                    t.penup()
+                    t.goto(50, 65)
+                    t.setheading(45)
+                    t.pensize(8)
+                    t.pencolor("white")
+                    t.pendown()
+                    t.forward(25)
+                    t.penup()
+                    t.goto(70, 65)
+                    t.pendown()
+                    t.forward(12)
+                    # 右镜片光泽
+                    t.penup()
+                    t.goto(-50, 65)
+                    t.setheading(45)
+                    t.pensize(8)
+                    t.pencolor("white")
+                    t.pendown()
+                    t.forward(25)
+                    t.penup()
+                    t.goto(-30, 65)
+                    t.pendown()
+                    t.forward(12)
+                
+                
+                # 请在下方 head() 指令中输入代码，去除大黄鸡
+                head("yellow")
+                face()
+                # hands()
+                seat()
+                # 请在下方 glasses() 指令中输入代码，给大黄鸡戴上墨镜
+                glasses("black")
+                # ----------------------------
+                engines()
+                
+        </p>
+        <p>
+                # 召唤大黄鸡
+                '''
+                滚动鼠标滑轮，让程序页面滑动到最后
+                然后根据视频指示，通过指令一起修复大黄鸡
+                '''
+                import turtle
+                
+                t = turtle.Pen()
+                t.hideturtle()
+                t.speed(0)
+                
+                
+                def head(color=None):
+                    is_wounded = False
+                    if not color:
+                        color = "yellow"
+                        is_wounded = True
+                
+                    t.penup()
+                    t.goto(0, -100)
+                    t.pendown()
+                    t.begin_fill()
+                    t.color(color)
+                    t.circle(100)
+                    t.end_fill()
+                
+                    if is_wounded:
+                        # 伤痕
+                        t.penup()
+                        t.goto(-60, -50)
+                        t.setheading(45)
+                        t.pensize(8)
+                        t.pencolor("gray")
+                        t.pendown()
+                        t.forward(20)
+                        t.penup()
+                        t.goto(-40, -50)
+                        t.pendown()
+                        t.forward(16)
+                
+                
+                def face(eye=("up", "black"), nose="darkred", mouth="coral"):
+                    # 设置画眼睛
+                    t.pencolor(eye[1])
+                    t.pensize(5)
+                
+                    def draw_eye(eye):
+                        if eye[0] == "down":
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 25)
+                            t.pendown()
+                            t.setheading(-70)
+                            t.circle(20, 140)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 25)
+                            t.pendown()
+                            t.setheading(-110)
+                            t.circle(-20, 140)
+                        elif eye[0] == "open":
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 25)
+                            t.pendown()
+                            t.setheading(-70)
+                            t.dot(16)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 25)
+                            t.pendown()
+                            t.setheading(-110)
+                            t.dot(16)
+                        else:
+                            # 左眼睛
+                            t.penup()
+                            t.goto(-55, 15)
+                            t.pendown()
+                            t.setheading(70)
+                            t.circle(-20, 140)
+                            # 右眼睛
+                            t.penup()
+                            t.goto(55, 15)
+                            t.pendown()
+                            t.setheading(110)
+                            t.circle(20, 140)
+                
+                    def draw_nose(nose):
+                        t.penup()
+                        t.goto(-15, -10)
+                        t.pensize(1)
+                        t.color(nose)
+                        t.setheading(-90)
+                        t.pendown()
+                        t.begin_fill()
+                        t.circle(15, 180)
+                        for i in range(10):
+                            t.forward(3)
+                            t.left(7)
+                        t.left(20)
+                        t.backward(2)
+                        t.left(20)
+                        for i in range(10):
+                            t.forward(3)
+                            t.left(7)
+                        t.end_fill()
+                
+                    def draw_mouth(mouth):
+                        # 嘴巴(外)
+                        t.penup()
+                        t.goto(12, -10)
+                        t.setheading(120)
+                        t.color(mouth)
+                        t.begin_fill()
+                        t.circle(14, 120)
+                        t.setheading(-60)
+                        t.circle(14, 120)
+                        t.end_fill()
+                
+                    draw_eye(eye)
+                    draw_nose(nose)
+                    draw_mouth(mouth)
+                
+                
+                def hands(color="yellow"):
+                    # 左手
+                    t.pensize(1)
+                    t.penup()
+                    t.goto(-100, 0)
+                    t.setheading(190)
+                    t.pendown()
+                    t.color(color)
+                    t.begin_fill()
+                    for i in range(7):
+                        t.forward(9)
+                        t.left(6)
+                    for i in range(19):
+                        t.forward(1)
+                        t.left(6)
+                    for i in range(7):
+                        t.forward(9)
+                        t.left(5)
+                    t.end_fill()
+                    # 右手
+                    t.penup()
+                    t.goto(100, 0)
+                    t.setheading(-10)
+                    t.pendown()
+                    t.fillcolor(color)
+                    t.begin_fill()
+                    for i in range(7):
+                        t.forward(9)
+                        t.right(6)
+                    for i in range(19):
+                        t.forward(1)
+                        t.right(6)
+                    for i in range(7):
+                        t.forward(9)
+                        t.right(5)
+                    t.end_fill()
+                
+                
+                # 引擎
+                def engines(size=10):
+                    def engine(x, y):
+                        t.pensize(1)
+                        t.setheading(0)
+                        # 外圆位置
+                        t.penup()
+                        t.goto(x, y)
+                        t.pendown()
+                        # 画外圆
+                        t.color("black", "yellow")
+                        t.begin_fill()
+                        t.circle(-size)
+                        t.end_fill()
+                        # 内圆位置
+                        t.penup()
+                        t.goto(x, y - 4)
+                        t.pendown()
+                        # 画内圆
+                        t.setheading(0)
+                        t.color("black", "brown")
+                        t.begin_fill()
+                        t.circle(-size + 4)
+                        t.end_fill()
+                
+                    # 左引擎
+                    engine(-100, -40)
+                    engine(-130, -40)
+                    # 右引擎
+                    engine(100, -40)
+                    engine(130, -40)
+                
+                
+                def seat(chair_color="brown"):
+                    # 护栏
+                    t.penup()
+                    t.goto(50, 96)
+                    t.color("deepskyblue")
+                    t.pensize(1)
+                    t.pendown()
+                    t.begin_fill()
+                    t.setheading(90)
+                    t.circle(10, 90)
+                    t.forward(10)
+                    t.setheading(90)
+                    t.forward(10)
+                    t.circle(5, 90)
+                    t.forward(50)
+                    t.circle(5, 90)
+                    t.forward(10)
+                    t.setheading(180)
+                    t.forward(10)
+                    t.circle(10, 90)
+                    t.setheading(0)
+                    t.forward(100)
+                    t.end_fill()
+                    # 坐椅
+                    t.penup()
+                    t.goto(20, 122)
+                    t.color(chair_color)
+                    t.setheading(90)
+                    t.pendown()
+                    t.begin_fill()
+                    t.forward(15)
+                    t.circle(5, 90)
+                    t.forward(30)
+                    t.circle(5, 90)
+                    t.forward(15)
+                    t.end_fill()
+                
+                
+                def glasses(color="skyblue"):
+                    # 左镜框
+                    t.penup()
+                    t.goto(20, 50)
+                    t.pencolor("brown")
+                    t.pensize(10)
+                    t.setheading(0)
+                    t.pendown()
+                    t.fillcolor(color)
+                    t.begin_fill()
+                    for i in range(2):
+                        t.forward(60)
+                        t.circle(8, 90)
+                        t.forward(30)
+                        t.circle(8, 90)
+                    t.end_fill()
+                    # 右镜框
+                    t.penup()
+                    t.goto(-20, 50)
+                    t.setheading(180)
+                    t.pendown()
+                    t.begin_fill()
+                    for i in range(2):
+                        t.forward(60)
+                        t.circle(-8, 90)
+                        t.forward(30)
+                        t.circle(-8, 90)
+                    t.end_fill()
+                    # 眼镜连接
+                    t.penup()
+                    t.goto(-6, 70)
+                    t.setheading(0)
+                    t.pensize(20)
+                    t.pendown()
+                    t.forward(13)
+                    # 左镜片光泽
+                    t.penup()
+                    t.goto(50, 65)
+                    t.setheading(45)
+                    t.pensize(8)
+                    t.pencolor("white")
+                    t.pendown()
+                    t.forward(25)
+                    t.penup()
+                    t.goto(70, 65)
+                    t.pendown()
+                    t.forward(12)
+                    # 右镜片光泽
+                    t.penup()
+                    t.goto(-50, 65)
+                    t.setheading(45)
+                    t.pensize(8)
+                    t.pencolor("white")
+                    t.pendown()
+                    t.forward(25)
+                    t.penup()
+                    t.goto(-30, 65)
+                    t.pendown()
+                    t.forward(12)
+                
+                
+                # 请在下方 head() 指令中输入代码，去除大黄鸡
+                head("yellow")
+                face()
+                # hands()
+                seat()
+                # 请在下方 glasses() 指令中输入代码，给大黄鸡戴上墨镜
+                glasses("black")
+                # ----------------------------
+                engines()
+                
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position_absolute_1</title>
+    <!--
+    position_absolute  --  实际工作用的最多，同时也比较难
+    使元素脱离常规流(把家里房卖了，出去北漂；relative是北漂但是家里还有房)
+    
+    1. 脱离常规流
+    2. 设置尺寸的时候，百分比相应的是最近定位祖先元素（如果都没有，就认 <body> 为爹
+    3. lrtb如果设置为0，会对齐到最近定位祖先元素的各边————衍生出一个居中妙计
+    4. z-index可以控制堆叠顺序999999
+    -->
+    <style>
+        .block{
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            border: 2px solid black;
+        }
+        .block:nth-child(1){
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border-color: blue;
+            z-index: 999;
+        }
+        .block:nth-child(2){
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border-color: red;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="block">A</div>
+    <div class="block">B</div>
+    <div class="block">C</div>
+</body>
+</html>

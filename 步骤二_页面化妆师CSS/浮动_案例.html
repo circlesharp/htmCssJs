@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动_案例</title>
+    <style>
+        *{padding: 0; margin: 0 auto; color: #fff; font-size: 20px;}
+        body{
+            width: 80%;
+            min-width: 1000px;
+            min-height: 1500px;
+        }
+        .hearder{
+            height: 100px;
+            background: #999494;
+            
+        }
+        .logo{
+            float: left;
+            margin: 10px 0 0 30px;
+        }
+        .nav{
+            /* width: 530px;       这里收到标准做法的启发，直接自适应 */
+            float: right;
+            margin-right: 70px;
+            /* border: black 1px solid; */
+        }
+        .nav_detail{
+            /* line-height: 100px; */
+            float: left;
+            color: #333;
+            padding: 0 15px;
+            margin: 35px 0 0 0;
+        }
+
+        .main{
+            height: 600px;
+        }
+        .content{
+            float: left;
+            background: blue;
+            width: 80%;
+            height: 100%;
+        }
+        .sidebar{
+            float: right;
+            background: orange;
+            width: 20%;
+            height: 100%;
+        }
+
+        .footer{
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearder">
+        <div class="logo"><img src="img/logo.png" /></div>
+        <div class="nav">
+            <div class="nav_detail">免费课程</div>
+            <div class="nav_detail">职业路径</div>
+            <div class="nav_detail">实战</div>
+            <div class="nav_detail">猪问</div>
+            <div class="nav_detail">手记</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content">content</div>
+        <div class="sidebar">sidebar</div>
+    </div>
+    <div class="footer">footer</div>
+</body>
+</html>

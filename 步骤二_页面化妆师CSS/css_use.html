@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css使用方法</title>
+    <!-- 内部样式/嵌入样式 -->
+        <style type="text/css">
+            p{color:blueviolet; font-family:"宋体";}  /* 小技巧，有些低版本浏览器不支持 style 标签，所以可以用html的注释方法来注射本行 */
+        </style>
+
+    <!--外部样式-->
+        <link href="css.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<!-- 1. 行内样式 / 内联样式 -->
+    <!-- 不太建议，应为没有达到分离的效果 -->
+    <!-- 但是，如果要对特定元素修改，这样是可取的 -->
+    <h1 style="color:cornflowerblue; font-size:20px;">css使用方法</h1>
+
+<!-- 2. 内部样式 / 嵌入样式 -->
+    <!-- 如css_base.html：将<style type="text/css">写在<head>标签之间 -->
+    <p>行内样式/内联样式</p>
+    <p>内部样式/嵌入样式</p>
+    <p>外部样式表</p>
+    <p>导入式</p>
+    
+<!-- 3. 外部样式 -->
+    <!-- 把css样式代码写在独立的一个文件中(.css后缀) -->
+    <!-- 使用link标签，放在head标签之间，还有3个参数： href, rel, type -->
+    <!-- 常用 -->
+    <h6>css一共4总引用方法（这个效果，由第3外部样式实现）</h6>
+
+<!-- 第四种不做了。。第三种常用 -->
+
+
+</body>
+</html>

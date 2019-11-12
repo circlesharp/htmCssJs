@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>CSS选择器</title>
+	<style type="text/css">
+		p{color:brown;}  /* 标签选择器 */
+		.special{color:cornflowerblue;}  /* 类选择器，搭配 class，用. */
+		p.special{font-size:50px;}  /* 标签搭配类选择器 */
+		.one{text-decoration:underline;}  一个元素两个class值并存
+		#two{color:green;}  /* id 选择器，搭配 id，用# */
+		#three, h1, p.special{font-size:50px;}  /* 群组选择器，用, */
+		*{font-family:"宋体";}  /* 全局选择器，用* */
+		h1 em{color:orangered}  /* 后代选择器，用 (space) */
+		h1.special em{color:rgb(219, 63, 159)}  /* 综合 */
+		/* 伪类选择器，用: */
+		/* 优先级 link>visited>hover>active */
+		h1 a.test:link{color:red;}
+		h1 a.test:visited{color:green;}
+		h1 a.test:hover{color:steelblue;}
+		h1 a.test:active{color:blue; font-family:"微软雅黑";}
+		.test{text-decoration:none;}  /* 去除链接的下划线 */
+		h2.reason:hover{color:blueviolet;}
+		h2.reason:active{color:skyblue;}
+	</style>
+</head>
+<body> 
+    <h1 class="special"><em>CSS</em>是什么</h1>
+	<p><em>CSS</em>层叠样式</p>
+	<p class="special one">用于定义HTML内容在浏览器中的显示样式</p>
+	<p><em>CSS</em>样式由选择器和声明组成</p>
+	<div>
+		<h1 id="two"><em>css</em>使用方法</h1>
+		<!-- ul: unordered list 无序列表 -->
+		<ul id="three">
+			<li>行内样式</li>
+			<li>内部样式</li>
+			<li>外部样式</li>
+			<li>导入式</li>	
+		</ul>
+		<h1><em>css选择器</em></h1>
+		<ul>
+			<li>标签选择器</li>
+			<li>ID选择器</li>
+			<li>类选择器</li>
+			<li>后代选择器</li>
+		</ul>
+		<hr />
+		<!-- ol: ordered list 有序列表 -->
+		<h1><a href="https://www.baidu.com/" target="_blank" class="test">有序列表测试（彩蛋）</a></h1>
+		<h2 class="reason">摸鱼为什么快乐</h2>
+		<ol>
+			<li>有钱收，不至于饿死</li>
+			<li>翅膀硬起来</li>
+			<li>能够向同事请教</li>
+		</ol>
+		<h2 class="reason">为什么不上班也要来公司</h2>
+		<ol>
+			<li>学习环境好</li>
+			<li>不容易分心</li>
+		</ol>		
+	</div>	
+</body>
+</html>

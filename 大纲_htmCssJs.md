@@ -117,7 +117,7 @@
     缩写：
         {font: font-style font-variant font-weitht font-size/line-height font-family}
         注意顺序，空格隔开
-### 文本样式
+#### 文本样式
     text-align（文本对齐）
         仅对块级元素有效
         解决方法，在外部增加一个<div>，就能继承样式
@@ -138,5 +138,108 @@
         capitalize, uppercase, lowercase, none
     text-docoration（设置元素内文本的装饰）
         underline, overline, line-through, blink, none
-### 盒子模型
-    
+### 03-盒子模型
+    1. 宽度属性 width
+        （IE6不支持：max-width | min-width）
+        设置内容的宽度
+    2. height 也是这样的
+    3. width 与 height 的适用范围
+        1. 块级元素
+            <p> <div> <h1~h6> <ul> <li> <ol> <dl> <dt> <dd>
+        2. 替换元素-> 浏览器根据其标签的元素与属性来判断显示的具体内容
+            <img> <input> <textarea>
+    4. border 边框属性
+        1. border-width border-color border-sytle
+            border-color: 颜色、transparent（透明）
+            border-sytle：要先定义，否则边框的颜色也不会显示
+        2. 方向
+            border-[left | right | top | bottom]-width|color|sytle
+            如：border-left-color
+        3. 缩写
+            border: 宽度 样式 颜色;
+    5. padding 内边距
+        1. 内容到边框的距离
+        2. 盒子在网页中占的空间，不单单与width和height属性相关，还与padding有关。
+        3. 缩写
+            padding: up
+            padding: ub rl
+            padding: u rl b
+            padding: u r b l
+        4. 注意，padding 不能设为负值；margin 可以设置为负值。
+    6. margin 外边距
+        1. 和padding缩写一样
+        2. margin 为 auto，实现水平方向居中显示效果  // 常用
+        3. 相邻 margin 取最大
+    7. display属性
+        1. inline
+        2. block
+        3. inline-block
+        4. none
+### 05-float浮动
+    1. css定位机制
+        1. 普通流（标准流）
+            默认状态，从左往右，从上到下
+            注意：行内元素不能设置宽高
+        2. 浮动
+        3. 绝对定位
+    2. 浮动（Float）的基础知识
+        1. 会使元素向左、向右移动，只能左右，不能上下。
+        2. 浮动元素碰到 包含框 或者 另一个浮动框 ，浮动停止。
+        3. 浮动元素之后的元素将围绕它，之前的不受影响。
+        4. 最开始的时候，是用来做文字环绕图片的效果
+        5. 虽然浮动之后脱离了文档流，但是仍在文本流当中。
+    3. Float的基本语法
+        1. float: left
+        2. float: right
+        3. float: none
+    4. 清除浮动语法
+        clear: none|left|right|both;
+    5. 浮动的问题：
+        1. “高度塌陷” -> 浮动溢出
+            元素使用浮动后会脱离普通流，出现“高度塌陷”。
+        2. 区分文本流、标准流
+            如果只给box_01设置浮动，02的盒子不见了，但是文本还留着。
+            如果只给box_01、02设置浮动，03盒子不见了，但文本留着01的下面，高度塌陷。
+            如果给3个盒子都设置浮动，容器就没有高度了，浮动溢出。再添加一个大一点的box_04,升上去了，但是文字会尾随，颜色在后面。
+    5. 清除浮动常用方法
+        1. 在浮动元素后使用一个空元素IE
+            如： <div class="class"></div>
+        2. 给浮动元素的容器（父元素）添加
+            overflow: hidden;
+            zoom: 1;  // 兼容垃圾IE
+        3. 使用CSS3的 :after伪元素（给夫元素添加类名，弄一个假的空元素；主流）
+            .clearfix:after{content:"."; display:block; height:0; visibility:hidden; clear:both;}
+            .clearfix{zoom: 1;}
+        4. 给容器定义高度，不让它崩塌（只适合高度固定的布局）
+        5. 歪门邪道：容器也一起浮动（不推荐）
+
+### 06-CSS定位(position)
+#### 1. static
+        1. static/静态定位/常规定位/自然定位（从左往右，从上到下）
+        2. 使元素定位于常规/自然流中
+        3. 会忽略 top, bottom, left, right, z-index 声明
+        4. 当具有固定的 width，margin的左右都设置为auto，则水平居中
+#### 2. relative
+        0. 使元素成为 containing-block | 官话就是：可定位的祖先元素
+        1. 可以使用 top/right/bottom/left/z-index 进行相对定位
+        2. 相对定位的元素不会离开常规流  ——  心念家乡
+        3. 任何元素都可以设置为relative，它的绝对定位的后代都可以相对于它进行绝对定位  ——  超级好用
+        4. 可以使浮动元素发生偏移，并控制它们的堆叠顺序
+            对于浮动的，将position设为relative,就可以通过 top, bottom, right, left 去让它偏移
+            并且通过z-index调整堆叠顺序（例子，小人骑小马）
+#### 3. absolute  --  实际工作用的最多，同时也比较难
+        1. 脱离常规流
+            使元素脱离常规流(把家里房卖了，出去北漂；relative是北漂但是家里还有房)
+        2. 设置尺寸的时候，百分比相应的是最近定位祖先元素
+            如果都没有，就认 <body> 为爹
+        3. lrtb如果设置为0，会对齐到最近定位祖先元素的各边————衍生出一个居中妙计
+        4. z-index可以控制堆叠顺序999999
+        5. 任何元素都可以设置为relative，它的绝对定位的后代都可以相对于它进行绝对定位  ——  超级好用
+            通过调整 top, bottom, left, right
+        6. 如果要居中，就固定宽高之后（父元素要求相对定位），将margin设置为 auto
+        7. 如果要覆盖夫元素，就不设置（因为会继承）
+#### 4. fixed
+        1. 和 absolute 本是同根生
+        2. 区别就在于相对于谁定位
+            absolute    ->  容器
+            fixed       ->  视口

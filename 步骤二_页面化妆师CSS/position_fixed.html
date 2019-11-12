@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position_fixed</title>
+    <!--
+    position_fixed
+
+    -->
+    <style>
+        body{
+            height: 1200px;
+            background: skyblue;
+        }
+        .block{
+            margin: 120px 0 0 120px;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            border: 2px solid black;
+        }
+        .block:nth-child(1){
+            position: absolute;
+            top: 230px;
+            left: 20px;
+        }
+        .block:nth-child(2){
+            position: fixed;
+            top: 10px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="block">绝对定位-absolute</div>  <!-- absolute 跟随滚动：body -->
+        <div class="block">固定定位-fixed</div>     <!-- fixed 就好像钉在屏幕上：视口-->
+    </div>
+</body>
+</html>

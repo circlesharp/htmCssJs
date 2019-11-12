@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒子模型</title>
+    <style>
+        *, html{margin: 0; padding: 0; font-size: 16px;}
+        .one{
+            width: 300px;
+            height: 300px;
+            background: #acacac;  /* 300*300 */
+            padding: 20px 30px 40px 50px;  /* 380*360 */
+            border: 1px dashed pink;  /* 382*362 */
+            margin: 20px 30px;  /* 382*362 不算在 div.one 上 */
+        }
+        .content{
+            width: 100px;
+            height: 100px;
+            background: #ececec;
+            margin: 60px auto;
+        }
+        p{
+            width: 300px;
+            border: black solid 1px;
+        }
+        p:nth-child(3){
+            width: 400px;
+            margin: 50px 30px;
+        }
+        spam{
+            display: none;
+        }
+        .content:hover spam{
+            width: 50px;
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border: solid 1px pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">.one<div class="content">.content<spam>捉迷藏</spam></div></div>
+    <p>123(p)</p>
+    <p>
+        *, html{margin: 0; padding: 0; font-size: 16px;}<br><br>
+        .one{<br>
+            width: 300px;<br>
+            height: 300px;<br>
+            background: #acacac;  /* 300*300 */<br>
+            padding: 20px 30px 40px 50px;  /* 380*360 */<br>
+            border: 1px dashed pink;  /* 382*362 */<br>
+            margin: 20px 30px;  /* 382*362 不算在 div.one 上 */<br>
+        }<br><br>
+        .content{<br>
+            width: 100px;<br>
+            height: 100px;<br>
+            background: #ececec;<br>
+            margin: 60px auto;<br>
+        }<br><br>
+        p{<br>
+            width: 300px;<br>
+            border: black solid 1px;<br>
+        }<br>
+    </p>
+</body>
+</html>

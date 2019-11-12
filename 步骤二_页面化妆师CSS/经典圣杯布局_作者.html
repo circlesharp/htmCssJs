@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>In Search of the Holy Grail</title>
+    <style>
+        body{min-width: 550px;}
+        #container{
+            padding-left: 200px;
+            padding-right: 150px;
+        }
+        #container .column{
+            position: relative;
+            float: left;
+        }
+        #center{
+            width: 100%;
+        }
+        #left{
+            width: 200px;
+            right: 200px;
+            margin-left: -100%;
+        }
+        #right{
+            width: 150px;
+            margin-right: -150px;
+        }
+        #footer{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Let’s say you want to have a left column with a fixed width of 200 pixels 
+        and a right column with a fixed width of 150 pixels. -->
+
+    <!-- The strategy is straightforward. 
+    The container div will have a liquid center and fixed-width padding on the side. 
+    The trick is then to get the left column to line up with the left padding 
+    and the right column with the right padding, 
+    leaving the center column to fill the liquid width of the container. -->
+    
+    <div id="header"></div>
+    <div id="container">
+        <div id="center" class="column"></div>
+        <div id="left" class="column"></div>
+        <div id="right" class="column"></div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

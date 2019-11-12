@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position_relative</title>
+    <!-- 
+    position_relative
+    使元素成为 containing-block
+
+    1. 可以使用 top/right/bottom/left/z-index 进行相对定位
+    2. 相对定位的元素不会离开常规流  ——  心念家乡
+    3. 任何元素都可以设置为relative，它的绝对定位的后代都可以相对于它进行绝对定位  ——  超级好用
+    4. 可以使浮动元素发生偏移，并控制它们的堆叠顺序
+    -->
+    <style>
+        .block{
+            width: 80px;
+            height: 80px;
+            line-height: 80px;  /* 垂直对齐用 line-height */
+            text-align: center;  /* 水平对齐用 text-align */
+            border: 2px solid black;
+        }
+
+        .block:hover .test{
+            display: block;
+        }
+
+        .test{
+            display: none;
+            position: absolute;
+            top: 10px;    /* 相对于自己在常规流的位置向下偏移了10px */
+            left: 10px;
+            /* border-color: red; */
+            border: solid chocolate;  /* 如果不设置样式，border不显示出来。所以，如果只想改颜色，最好用 border-color */
+        }
+        .block:hover .test{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="block">A</div>
+        <div class="block test">B</div>
+        <div class="block">C</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>经典圣杯布局</title>
+    <!-- 
+    经典圣杯布局：
+    
+    1. 三列布局，中间宽度自适应，两边定宽
+    2. 中间栏要在浏览器中优先展示渲染
+    3. 允许任意列的高度最高
+    4. 最简单的CSS，最少的HACK语句
+     -->
+     <style type="text/css">
+         *{margin: 0; padding: 0;}
+         body{min-width: 700px;}  /*设置一个最小的宽度，保证正常体验*/
+         .header, .footer{
+             float: left;
+             width: 100%;
+             background: #ddd;
+             height: 40px;
+             line-height: 40px;
+             text-align: center;
+         }
+         .container{
+             padding: 0 220px 0 200px;
+         }
+         .middle, .left, .right{
+             position: relative;
+             float: left;
+             min-height: 300px;
+         }
+         .middle{
+             width: 100%;
+             background: #1a5acd;
+         }
+         .left{
+             width: 200px;
+             background: #f00;
+             margin-left: -100%;  /* 浮动情况下，负可以让div上移。-100%保证到了最左侧 */
+             right: 200px;
+             /* left: -200px; */
+         }
+         .right{
+             width: 220px;
+             background: #30a457;
+             margin-left: -220px;
+             left: 220px;
+         }
+     </style>
+</head>
+<body>
+    <div class="header">
+        <h4>header</h4>
+    </div>
+    <div class="container">
+        <div class="middle">
+            <h4>middle</h4>
+            <p>这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容这是中间内容</p>
+        </div>
+        <div class="left">
+            <h4>left</h4>
+            <p>这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容这是左边内容</p>
+        </div>
+        <div class="right">
+            <h4>right</h4>
+            <p>这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容这是右边内容</p>
+        </div>
+    </div>
+    <div class="footer">
+        <h4>footer</h4>
+    </div>
+</body>
+</html>

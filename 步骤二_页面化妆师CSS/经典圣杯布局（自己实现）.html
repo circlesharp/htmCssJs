@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯布局——自己实现</title>
+    <style>
+        *{margin: 0; padding: 0; font-size: 22px;}
+        header, footer{
+            width: 100%;
+            height: 50px;
+            background: rgb(156, 167, 179);
+            line-height: 50px;
+            text-align: center;
+        }
+        body{
+            min-width: 800px;
+        }
+        #container{
+            /* min-width: 500px; */
+            padding: 0 200px 0 300px;  /*容器的宽度不要设置，因为后文的padding不算在里面*/
+        }
+        #center, #left, #right{
+            float: left;
+            min-height: 900px;
+            text-align: center;
+            line-height: 300px;
+        }
+        #center{
+            min-width: 300px;
+            width: 100%;
+            background: rgb(221, 164, 164);
+        }
+        #left{
+            position: relative;
+            width: 220px;
+            /* padding: 0 40px; */
+            background: rgb(108, 138, 108);
+            margin-left: -100%;  /*这里只能填相对数*/
+            right: 260px;
+        }
+        #right{
+            position: relative;
+            width: 160px;
+            background: rgb(131, 131, 163);
+            margin-left: -200px;  /*这里只能填绝对数*/
+            left: 220px;
+        }
+        footer{
+            clear: both;  /*清除浮动最直接的方式*/
+        }
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <div id="container">
+        <div id="center">center</div>
+        <div id="left">left</div>
+        <div id="right">right</div>
+    </div>
+    <footer>footer</footer>
+</body>
+</html>

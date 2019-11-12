@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS DOM操作</title>
+    <!-- 
+    JS DOM操作：
+    1. 添加节点
+    2. 删除节点
+    3. 修改节点
+    4. 查找节点
+    -->
+
+    <!-- 
+    节点分类 
+    1. 元素节点 element node
+        -> DOM的原子就是元素
+    2. 文本节点 text node
+        -> 大多数的内容都是文本
+    3. 属性节点 attribute node
+        -> 属性给元素作出更具体的描述
+    -->
+
+    <!-- 添加（创建）节点
+    create系列方法
+    1. document.createElement()
+    2. document.createTextNode() -> 新的文本节点
+    3. document.createDocumentFragment() -> 创建文档片段
+    4. document.createComment() -> 创建注释节点 （尽管很少动态创建）
+    -->
+
+    <script src="js/domReady.js"></script>
+    <!-- <script>
+        myReady(function(){
+            var ul = document.getElementById("myList");
+            var li = document.createElement("li");
+            var txt = document.createTextNode("Item");
+            ul.appendChild(li);
+            li.appendChild(txt);
+        })
+    </script> -->
+    <script>
+    myReady(function(){
+        var comment = document.createComment("a comment");
+        var fragment = document.createDocumentFragment();  /*创建文档片段*/
+        var ul = document.getElementById("myList");
+        var li = null;
+        document.body.insertBefore(comment, document.body.firstChild);  /*2个参数：值，位置*/
+        for (var i=0; i<3; i++){
+            li = document.createElement("li");  /*创建li元素节点*/
+            li.appendChild(document.createTextNode("Item "+(i+1)));  /*给元素节点增加子节点，这个字节点是文本节点*/
+            fragment.appendChild(li);  /*把li节点作为文档片段fragment的子节点*/
+        }
+        ul.appendChild(fragment)  /*把fragment作为ul的子节点*/
+    });  /*声明文档片段，为文档片段装填值，*/
+    </script>
+</head>
+
+<body>
+    <ul id="myList"></ul>
+</body>
+</html>

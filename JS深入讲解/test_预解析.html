@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 预解析
+        console.log(a);         // a()
+        var a = 1;
+        console.log(a);         // 1
+        function a(){
+            console.log(2);
+        }
+        console.log(a);         // 1
+        var a = 3;
+        console.log(a);         // 3
+        function a(){
+            console.log(4);
+        }
+        console.log(a);         // 3
+        a();                    // TypeError
+    </script>
+    <script>
+        var a = 1;
+        function fn(){
+            console.log(a);
+            a = 2
+        }
+        fn();                   // 1
+        console.log(a);         // 2
+    </script>
+    <script>
+        var a = 1;
+        function fn(a) {
+            console.log(a)     // undefined 因为参数也要预解析
+            a = 2
+        }
+        fn();
+        console.log(a);         // 1
+    </script>
+    <script>
+        var a = 1;
+        function fn(a) {
+            console.log(a);     // 1
+            a = 2;a
+        }
+        fn(a);
+        console.log(a);         // 1
+    </script>
+</body>
+</html>
